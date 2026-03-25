@@ -476,22 +476,7 @@ function applyTranslations(lang) {
 
 // Single setLanguage function
 function setLanguage(lang) {
-  if (lang === currentLang) return;
-
-  const sections = document.querySelectorAll(
-    ".hero, .section, .price-block, footer",
-  );
-  sections.forEach((section) => {
-    section.style.opacity = "0.5";
-    section.style.transition = "opacity 0.2s ease";
-  });
-
-  setTimeout(() => {
-    applyTranslations(lang);
-    sections.forEach((section) => {
-      section.style.opacity = "1";
-    });
-  }, 150);
+  setLanguageWithURL(lang);
 }
 
 // Modal functions
@@ -911,11 +896,43 @@ images.forEach((img) => {
 });
 
 // Load saved language preference
+const urlParams = new URLSearchParams(window.location.search);
+const urlLang = urlParams.get('lang');
 const savedLang = localStorage.getItem("preferredLanguage");
-if (savedLang && translations[savedLang]) {
-  applyTranslations(savedLang);
-} else {
-  applyTranslations("ru");
+
+// Priority: URL parameter > saved preference > default language
+let initialLang = "ru";
+if (urlLang && translations[urlLang]) {
+  initialLang = urlLang;
+} else if (savedLang && translations[savedLang]) {
+  initialLang = savedLang;
+}
+
+applyTranslations(initialLang);
+
+// Update URL when language changes
+function setLanguageWithURL(lang) {
+  if (lang === currentLang) return;
+
+  // Update URL with language parameter
+  const newURL = new URL(window.location);
+  newURL.searchParams.set('lang', lang);
+  window.history.replaceState({ lang: lang }, '', newURL);
+
+  const sections = document.querySelectorAll(
+    ".hero, .section, .price-block, footer",
+  );
+  sections.forEach((section) => {
+    section.style.opacity = "0.5";
+    section.style.transition = "opacity 0.2s ease";
+  });
+
+  setTimeout(() => {
+    applyTranslations(lang);
+    sections.forEach((section) => {
+      section.style.opacity = "1";
+    });
+  }, 150);
 }
 
 // Modal resets on each session

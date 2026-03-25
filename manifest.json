@@ -1,0 +1,65 @@
+{
+  "name": "Otabek Hujayorov - Training Program",
+  "short_name": "HUJAYOROFF",
+  "description": "Science-based fitness training program to build muscle without steroids in just 3 hours per week",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0a0a0a",
+  "theme_color": "#c1a55c",
+  "lang": "en",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "./assets/favicon/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "./assets/favicon/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./assets/favicon/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["fitness", "health", "lifestyle"],
+  "screenshots": [
+    {
+      "src": "./assets/images/org.png",
+      "sizes": "540x720",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "View Program",
+      "short_name": "Program",
+      "description": "View the training program",
+      "url": "/?lang=en#program",
+      "icons": [
+        {
+          "src": "./assets/favicon/android-chrome-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "View Pricing",
+      "short_name": "Pricing",
+      "description": "Check pricing and plans",
+      "url": "/?lang=en#price",
+      "icons": [
+        {
+          "src": "./assets/favicon/android-chrome-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
